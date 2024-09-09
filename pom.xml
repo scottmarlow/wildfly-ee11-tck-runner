@@ -434,6 +434,74 @@
                     </execution>
 
                     <execution>
+                        <id>jpa</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                                <!-- include>ee.jakarta.tck.persistence.core.EntityGraph.ClientPuservletTest</include-->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>jpa-appclient</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-appclient</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>**/*Client*Test*.java</include>
+                                <!-- Examples of single tests -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = false
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-appclient-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+
+                    <execution>
                         <id>smoketest-appclient</id>
                         <phase>test</phase>
                         <goals>
@@ -729,9 +797,41 @@
                         </configuration>
                     </execution>
 
+                    <execution>
+                        <id>jpa-appclient</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>true</skip>
+                            <groups>tck-appclient</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>**/*Client*Test*.java</include>
+                                <!-- Examples of single tests -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = false
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-appclient-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
 
                     <execution>
-                        <id>jpa</id>
+                        <id>ee.jakarta.tck.persistence.core.criteriaapi</id>
                         <phase>test</phase>
                         <goals>
                             <goal>test</goal>
@@ -744,9 +844,11 @@
                             <groups>tck-javatest</groups>
                             <includes>
                                 <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/criteriaapi/**/*Client*Test*.java</include>
                                 <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
                                 <!-- Examples of single tests -->
-                                <include>ee.jakarta.tck.persistence.core.EntityGraph.ClientPuservletTest</include>
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
                             </includes>
                             <properties>
                                 <configurationParameters>
@@ -763,6 +865,852 @@
                             </systemPropertyVariables>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.derivedid</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/derivedid/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.entitytest</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/entitytest/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.metamodelapi</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/metamodelapi/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.annotations</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/annotations/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.query</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/query/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.StoredProcedureQuery</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/StoredProcedureQuery/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.cache</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/cache/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.callback</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/callback/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.types</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/types/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.basic</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/basic/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.enums</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/enums/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.exceptions</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/exceptions/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.inheritance</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/inheritance/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.lock</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/lock/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.nestedembedding</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/nestedembedding/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.override</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/override/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.persistenceUtil</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/persistenceUtil/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.persistenceUnitUtil</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/persistenceUnitUtil/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.relationship</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/relationship/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.core.versioning</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/core/versioning/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                   
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.ee</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/ee/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.jpa22</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/jpa22/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.jpa</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/jpa/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>ee.jakarta.tck.persistence.entitytest</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <dependenciesToScan>
+                                <dependency>jakarta.tck:persistence-platform-tck-tests</dependency>
+                            </dependenciesToScan>
+                            <skip>false</skip>
+                            <groups>tck-javatest</groups>
+                            <includes>
+                                <!-- All tests -->
+                                <include>ee/jakarta/tck/persistence/entitytest/**/*Client*Test*.java</include>
+                                <!--include>ee/jakarta/tck/persistence/**/*Test.java</include-->
+                                <!-- Examples of single tests -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.basic.ClientPmservletTest</include> -->
+                             <!--   <include>ee.jakarta.tck.persistence.core.StoredProcedureQuery.Client1PmservletTest</include> -->
+                            </includes>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.extensions.autodetection.enabled = true
+                                    junit.platform.output.capture.stderr = true
+                                    junit.platform.output.capture.stdout = true
+                                    junit.platform.reporting.open.xml.enabled = true
+                                    junit.platform.reporting.output.dir = target/junit5-reports
+                                </configurationParameters>
+                            </properties>
+                            <systemPropertyVariables>
+                                <arquillian.xml>javatest-arquillian.xml</arquillian.xml>
+                                <ts.home>${ts.home}</ts.home>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+
                 </executions>
             </plugin>
         </plugins>
